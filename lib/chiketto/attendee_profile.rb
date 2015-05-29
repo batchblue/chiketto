@@ -13,6 +13,8 @@ module Chiketto
                   :blog,
                   :gender,
                   :birth_date,
+                  :home_phone,
+                  :work_phone,
                   :cell_phone
 
     def addresses
