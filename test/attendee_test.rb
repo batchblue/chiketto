@@ -26,6 +26,11 @@ class AttendeeTest < MiniTest::Test
     assert_kind_of Chiketto::AttendeeProfile, attendee.profile
   end
 
+  def test_attendee_returns_event
+    attendee = Chiketto::Attendee.new
+    assert_kind_of Chiketto::Event, attendee.event
+  end
+
   def test_assigned_number_is_handled
     attendee = Chiketto::Attendee.new assigned_number: 1
     assert_equal attendee.assigned_number, 1
