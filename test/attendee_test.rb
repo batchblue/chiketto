@@ -6,6 +6,8 @@ class AttendeeTest < MiniTest::Test
     assert_respond_to attendee, :ticket_class_id
     assert_respond_to attendee, :quantity
     assert_respond_to attendee, :status
+    assert_respond_to attendee, :checked_in
+    assert_respond_to attendee, :costs
     assert_respond_to attendee, :profile
     assert_respond_to attendee, :event_id
     assert_respond_to attendee, :order_id

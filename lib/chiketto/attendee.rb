@@ -2,6 +2,8 @@ module Chiketto
   class Attendee < Resource
     attr_accessor :quantity,
                   :status,
+                  :checked_in,
+                  :costs,
                   :ticket_class_id,
                   :event_id,
                   :order_id,
