@@ -20,6 +20,8 @@ module Chiketto
   require 'chiketto/ticket_class'
   require 'chiketto/user'
   require 'chiketto/venue'
+  require 'chiketto/contact_list'
+  require 'chiketto/contact'
 
   class << self
     attr_writer :api_key

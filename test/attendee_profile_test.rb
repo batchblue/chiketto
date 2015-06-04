@@ -16,6 +16,8 @@ class AttendeeProfileTest < MiniTest::Test
     assert_respond_to attendee_profile, :blog
     assert_respond_to attendee_profile, :gender
     assert_respond_to attendee_profile, :birth_date
+    assert_respond_to attendee_profile, :home_phone
+    assert_respond_to attendee_profile, :work_phone
     assert_respond_to attendee_profile, :cell_phone
     assert_respond_to attendee_profile, :addresses
   end

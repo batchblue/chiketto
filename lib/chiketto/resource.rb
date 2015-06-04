@@ -21,25 +21,28 @@ module Chiketto
     end
 
     def self.post(uri, params = {})
-      uri = URI.parse endpoint(uri) + query(params)
-      resource = open_post uri
-      JSON.parse resource
+      http_call(Net::HTTP::Post, uri, params)
+    end
+
+    def self.delete(uri, params = {})
+      http_call(Net::HTTP::Delete, uri, params)
     end
 
     def self.endpoint(uri)
       ENDPOINT + uri + token
     end
 
-    def self.open_post(uri)
+    def self.http_call(type, uri, params)
+      uri = URI.parse endpoint(uri) + query(params)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
-      request = Net::HTTP::Post.new(uri.request_uri)
+      request = type.new(uri.request_uri)
       request.add_field 'Authorization', "Bearer #{Chiketto.api_key}"
       response = http.request(request)
       if response.code !~ /20\d/
         raise Chiketto::Exception, JSON.parse(response.body)
       end
-      response.body
+      JSON.parse response.body
     end
 
     def self.query(params)
