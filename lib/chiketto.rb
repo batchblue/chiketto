@@ -22,6 +22,7 @@ module Chiketto
   require 'chiketto/venue'
   require 'chiketto/contact_list'
   require 'chiketto/contact'
+  require 'chiketto/webhook'
 
   class << self
     attr_writer :api_key
