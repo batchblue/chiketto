@@ -6,6 +6,8 @@ class AttendeeTest < MiniTest::Test
     assert_respond_to attendee, :ticket_class_id
     assert_respond_to attendee, :quantity
     assert_respond_to attendee, :status
+    assert_respond_to attendee, :checked_in
+    assert_respond_to attendee, :costs
     assert_respond_to attendee, :profile
     assert_respond_to attendee, :event_id
     assert_respond_to attendee, :order_id
@@ -24,6 +26,11 @@ class AttendeeTest < MiniTest::Test
   def test_attendee_returns_profile
     attendee = Chiketto::Attendee.new
     assert_kind_of Chiketto::AttendeeProfile, attendee.profile
+  end
+
+  def test_attendee_returns_event
+    attendee = Chiketto::Attendee.new
+    assert_kind_of Chiketto::Event, attendee.event
   end
 
   def test_assigned_number_is_handled
