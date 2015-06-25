@@ -19,8 +19,8 @@ module Chiketto
       @attendees.map { |attendee| Attendee.new attendee }
     end
 
-    def self.find(id)
-      order = get "orders/#{id}"
+    def self.find(id, params = {})
+      order = get "orders/#{id}", params
       Order.new order
     end
   end
