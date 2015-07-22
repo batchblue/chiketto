@@ -20,8 +20,8 @@ module Chiketto
       Event.new response
     end
 
-    def self.find(id)
-      event = get "events/#{id}"
+    def self.find(id, params = {})
+      event = get "events/#{id}", params
       Event.new event
     end
 
