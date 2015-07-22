@@ -9,7 +9,8 @@ module Chiketto
                   :order_id,
                   :assigned_number,
                   :answers,
-                  :barcodes
+                  :barcodes,
+                  :cancelled
 
     attr_date :changed,
               :created

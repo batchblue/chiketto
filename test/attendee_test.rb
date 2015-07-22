@@ -14,6 +14,7 @@ class AttendeeTest < MiniTest::Test
     assert_respond_to attendee, :assigned_number
     assert_respond_to attendee, :answers
     assert_respond_to attendee, :barcodes
+    assert_respond_to attendee, :cancelled
   end
 
   def test_attr_date_types
