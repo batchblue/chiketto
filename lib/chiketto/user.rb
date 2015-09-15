@@ -22,6 +22,11 @@ module Chiketto
       events.map { |e| Event.new e }
     end
 
+    def owned_events(params ={})
+      events = User.paginated_owned_events @id, params
+      events.map { |e| Event.new e }
+    end
+
     def event_attendees(params = {})
       attendees = User.paginated_attendees @id, params
       attendees.map { |e| Attendee.new e }
@@ -54,6 +59,10 @@ module Chiketto
     end
 
     def self.find_events(id, params)
+      get "users/#{id}/events", params
+    end
+
+    def self.find_owned_events(id, params)
       get "users/#{id}/owned_events", params
     end
 
