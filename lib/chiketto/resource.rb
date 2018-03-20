@@ -1,5 +1,4 @@
 require 'json'
-require 'open-uri'
 require 'net/http'
 
 module Chiketto
@@ -15,9 +14,7 @@ module Chiketto
     end
 
     def self.get(uri, params = {})
-      uri = endpoint(uri) + query(params)
-      resource = open uri
-      JSON.parse resource.read
+      http_call(Net::HTTP::Get, uri, params)
     end
 
     def self.post(uri, params = {})
@@ -36,6 +33,7 @@ module Chiketto
       uri = URI.parse endpoint(uri) + query(params)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
+      http.ssl_version = :TLSv1_2
       request = type.new(uri.request_uri)
       request.add_field 'Authorization', "Bearer #{Chiketto.api_key}"
       response = http.request(request)
